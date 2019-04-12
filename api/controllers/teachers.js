@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * This controller handles blog and news
- */
-
 const config = require('./../config/config');
 const request = require('request');
 const cheerio = require('cheerio'); // load htmlDOC from string
@@ -46,10 +42,7 @@ const teachers_controller = {
              */
 
             // Loading html document from string using cheerio library
-            const $ = cheerio.load(html, {
-                normalizeWhitespace: true,
-                xmlMode: false
-            });
+            const $ = cheerio.load(html);
 
             // Getting elements from html doc (jQuery like)
 
