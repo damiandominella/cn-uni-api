@@ -18,15 +18,65 @@ Response are in the following format:
 {
   "data": [
     {
-		  "title": "Post title",
-		  "link": "https://informatica.uniurb.it/bulletin-board/url/",
-		  "pubDate": "2019-04-16T11:59:21.000Z",
-		  "author": "Post author",
-		  "content": "Post content",
-		  "contentEncoded": "<p>Post content</p>"
-	  }
+      "title": "Post title",
+      "link": "https://informatica.uniurb.it/bulletin-board/url/",
+      "pubDate": "2019-04-16T11:59:21.000Z",
+      "author": "Post author",
+      "content": "Post content",
+      "contentEncoded": "<p>Post content</p>"
+    }
   ],
-	"count": 10
+  "count": 10
 }
 ```
 
+### GET /api/blog
+
+```
+{
+  "data": [
+    {
+      "title": "Post title",
+      "link": "https://informatica.uniurb.it/bulletin-board/url/",
+      "pubDate": "2019-04-16T11:59:21.000Z",
+      "author": "Post author",
+      "content": "Post content",
+      "contentEncoded": "<p>Post content</p>"
+    },
+  ],
+  "count": 1
+}
+```
+
+### GET /api/teachers
+
+```
+{
+  "data": [
+    {
+      "name": "Teacher's name",
+      "imgUrl": "https://informatica.uniurb.it/img.jpg",
+      "email": "teacher@email.it",
+      "phone": "+00 0000 00 000",
+      "receptionHours": "Ricevimento: mer 16:00-18:00"
+    },
+  ],
+  "count": 1
+}
+```
+
+### GET /api/study_plan
+
+```
+{
+  "data": [
+    {
+      "name": "Subject's name",
+      "link": "https://informatica.uniurb.it/subject",
+      "year": 1,
+      "cfu": 9
+    },
+  ],
+  "count": 1
+}
+```
