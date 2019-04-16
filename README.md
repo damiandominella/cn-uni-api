@@ -11,8 +11,14 @@ Response are in the following format:
   
   - _**500**: ERROR_
   ```{"error": {object}}```
+  
+------------------------------
 
 ### GET /api/news
+
+Retrieves the list of news from the bulletin board. 
+
+Source: https://informatica.uniurb.it/bulletin-board/feed/
 
 ```
 {
@@ -30,7 +36,13 @@ Response are in the following format:
 }
 ```
 
+------------------------------
+
 ### GET /api/blog
+
+Retrieves the list of posts from the blog. 
+
+Source: https://informatica.uniurb.it/feed/
 
 ```
 {
@@ -48,7 +60,13 @@ Response are in the following format:
 }
 ```
 
+------------------------------
+
 ### GET /api/teachers
+
+Retrieves the list of teachers of the university. 
+
+Source: https://informatica.uniurb.it/informazioni/personale/
 
 ```
 {
@@ -65,7 +83,13 @@ Response are in the following format:
 }
 ```
 
+------------------------------
+
 ### GET /api/study_plan
+
+Retrieves the list of subjects of the degree.
+
+Source: https://informatica.uniurb.it/didattica/piano_studi_18-19/
 
 ```
 {
