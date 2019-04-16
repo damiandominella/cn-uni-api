@@ -1,5 +1,13 @@
 # Applied Computer Science - Uniurb - API
 
+## Installation and running
+
+```bash 
+npm install && npm run start 
+```
+
+## Api documentation
+
 All endpoints are available under the _/api_ path (eg: for the news the path will be _/api/news_). 
 
 Response are in the following format:
