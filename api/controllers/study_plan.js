@@ -4,7 +4,7 @@ const config = require('./../config/config');
 const request = require('request');
 const cheerio = require('cheerio'); // load htmlDOC from string
 
-const study_plan_controller = {
+const studyPlanController = {
 
     /**
      * Fetch data from url
@@ -32,9 +32,6 @@ const study_plan_controller = {
         return new Promise((resolve, reject) => {
 
             /**
-             * two tables, full-time part-time
-             * 
-             * h2 before table is the title
              *  data is inside table.tab-list
              * 
              * tr > td > b is the year 
@@ -50,7 +47,6 @@ const study_plan_controller = {
 
             // we need to distinguish between full time and part time
             let fullTimeTable = $('table.tab-list').first();
-            let fullTimeTitle = fullTimeTable.prev('h2').html();
 
             let yearCount = 0;
             fullTimeTable.find('tr').each((index, el) => {
@@ -96,9 +92,9 @@ const study_plan_controller = {
     */
     get: (endpoint) => {
         return new Promise((resolve, reject) => {
-            study_plan_controller.fetch(endpoint)
+            studyPlanController.fetch(endpoint)
                 .then((data) => {
-                    study_plan_controller.convert(data).then((json) => {
+                    studyPlanController.convert(data).then((json) => {
                         resolve(json);
                     }).catch(reject);
                 })
@@ -107,4 +103,4 @@ const study_plan_controller = {
     },
 }
 
-module.exports = study_plan_controller;
+module.exports = studyPlanController;

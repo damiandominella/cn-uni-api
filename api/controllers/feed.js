@@ -7,7 +7,7 @@
 const request = require('request');
 const parseXmlString = require('xml2js').parseString;
 
-const feed_controller = {
+const feedController = {
 
     /**
      * Fetch data from url
@@ -43,14 +43,13 @@ const feed_controller = {
                     // Getting only the necessary data and kind of parsing in into objects instead of arrays
                     let output = [];
                     items.forEach((item) => {
-                        console.log(item);
                         let object = {
                             title: item.title[0],
                             link: item.link[0],
                             pubDate: new Date(item.pubDate[0]),
                             author: item['dc:creator'][0],
                             content: item.description[0],
-                            content_encoded: item['content:encoded'][0]
+                            contentEncoded: item['content:encoded'][0]
                         };
 
                         output.push(object);
@@ -67,9 +66,9 @@ const feed_controller = {
     */
     get: (endpoint) => {
         return new Promise((resolve, reject) => {
-            feed_controller.fetch(endpoint)
+            feedController.fetch(endpoint)
                 .then((data) => {
-                    feed_controller.convert(data).then((json) => {
+                    feedController.convert(data).then((json) => {
                         resolve(json);
                     }).catch(reject);
                 })
@@ -78,4 +77,4 @@ const feed_controller = {
     },
 }
 
-module.exports = feed_controller;
+module.exports = feedController;

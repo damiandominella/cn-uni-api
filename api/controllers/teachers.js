@@ -4,7 +4,7 @@ const config = require('./../config/config');
 const request = require('request');
 const cheerio = require('cheerio'); // load htmlDOC from string
 
-const teachers_controller = {
+const teachersController = {
 
     /**
      * Fetch data from url
@@ -58,7 +58,7 @@ const teachers_controller = {
 
                     /** getting the useful info from the content, since it's not formatted
                         we are splitting the <p> content between <br> tags, then shifting the array (deleting the index 0),
-                        of the array since we don't need it, so we have now an array: [email, phone, reception_hours]
+                        of the array since we don't need it, so we have now an array: [email, phone, receptionHours]
                     */
                     let content = $(el).find('p').html();
                     let info = content.split('<br>');
@@ -66,9 +66,9 @@ const teachers_controller = {
 
                     let email = info[0].replace("\n", '');
                     let phone = info[1] ? info[1].replace("\n", '') : null; // maybe not set
-                    let reception_hours = info[2] ? info[2].replace('\n', '') : null; // maybe not set
+                    let receptionHours = info[2] ? info[2].replace('\n', '') : null; // maybe not set
 
-                    let teacher = { name, imgUrl, email, phone, reception_hours };
+                    let teacher = { name, imgUrl, email, phone, receptionHours };
 
                     teachers.push(teacher);
                 }
@@ -83,9 +83,9 @@ const teachers_controller = {
     */
     get: (endpoint) => {
         return new Promise((resolve, reject) => {
-            teachers_controller.fetch(endpoint)
+            teachersController.fetch(endpoint)
                 .then((data) => {
-                    teachers_controller.convert(data).then((json) => {
+                    teachersController.convert(data).then((json) => {
                         resolve(json);
                     }).catch(reject);
                 })
@@ -94,4 +94,4 @@ const teachers_controller = {
     },
 }
 
-module.exports = teachers_controller;
+module.exports = teachersController;
