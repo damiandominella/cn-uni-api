@@ -99,6 +99,12 @@ Retrieves the list of subjects of the degree.
 
 Source: https://informatica.uniurb.it/didattica/piano_studi_18-19/
 
+Possibile parameters
+
+| name      | type    | required | default | explanation                                                                  |
+|-----------|---------|----------|---------|------------------------------------------------------------------------------|
+| part_time | boolean | false    | 0       | Defines if the study plan will be part time (5 years) or full time (3 years) |
+
 ```
 {
   "data": [

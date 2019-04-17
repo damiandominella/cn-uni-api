@@ -13,7 +13,7 @@ router.get('/news', (req, res) => {
     feedController.get(config.endpoints.news).then((data) => {
         res.json({ data: data, count: data.length });
     }).catch((error) => {
-        res.status(500).send(error);
+        res.status(500).json({error: error});
     });
 });
 
@@ -22,7 +22,7 @@ router.get('/blog', (req, res) => {
     feedController.get(config.endpoints.blog).then((data) => {
         res.json({ data: data, count: data.length });
     }).catch((error) => {
-        res.status(500).send(error);
+        res.status(500).json({error: error});
     });
 });
 
@@ -31,16 +31,16 @@ router.get('/teachers', (req, res) => {
     teachersController.get(config.endpoints.teachers).then((data) => {
         res.json({ data: data, count: data.length });
     }).catch((error) => {
-        res.status(500).send(error);
+        res.status(500).json({error: error});
     });
 });
 
 // Study plan endpoint, scrapes the data from the study plan page
 router.get('/study_plan', (req, res) => {
-    studyPlanController.get(config.endpoints.study_plan).then((data) => {
+    studyPlanController.get(config.endpoints.study_plan, req.query).then((data) => {
         res.json({ data: data, count: data.length });
     }).catch((error) => {
-        res.status(500).send(error);
+        res.status(500).json({error: error});
     });
 });
 
