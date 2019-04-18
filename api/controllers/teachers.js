@@ -65,8 +65,6 @@ const teachersController = {
                     let info = content.split('\n');
                     info.shift();
 
-                    console.log(info);
-
                     let email, phone, receptionHours = null;
 
                     if (info.length === 3) {
