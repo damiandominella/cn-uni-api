@@ -55,20 +55,20 @@ const studyPlanController = {
                 let addSubject = true;
                 let firstColumn = $(el).find('td').first();
 
-                let name = firstColumn.find('a').html() || firstColumn.html();
+                let name = firstColumn.find('a').text() || firstColumn.text();
                 let link = firstColumn.find('a').attr('href');
 
-                let year = firstColumn.find('b').html();
+                let year = firstColumn.find('b').text();
                 if (year) {
                     yearCount++;
                     addSubject = false;
                 }
 
                 // removing html tags and get only the text
-                name = name.replace(/<(?:.|\n)*?>/gm, '');
+                // name = name.replace(/<(?:.|\n)*?>/gm, '');
 
                 let lastColumn = $(el).find('td').last();
-                let cfu = lastColumn.html();
+                let cfu = lastColumn.text();
 
                 if (cfu) {
                     cfu = parseInt(cfu.replace(/&#xA0;/g).match(/\d+/)[0]); // get only the number

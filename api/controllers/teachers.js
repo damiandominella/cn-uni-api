@@ -51,7 +51,7 @@ const teachersController = {
             $(teacherDivsSelector).each((index, el) => {
                 if (index > 2) { // skipping first 2 items, since are coordinator and manager
                     // name is the nearest h3 in this div
-                    let name = $(el).find('h3').html();
+                    let name = $(el).find('h3').text();
 
                     // imgUrl must be composed in this way because some images are relative path and some are absolute
                     let imgUrl = config.baseSiteUrl + $(el).find('img').attr('src').replace(config.baseSiteUrl, '');
@@ -60,13 +60,27 @@ const teachersController = {
                         we are splitting the <p> content between <br> tags, then shifting the array (deleting the index 0),
                         of the array since we don't need it, so we have now an array: [email, phone, receptionHours]
                     */
-                    let content = $(el).find('p').html();
-                    let info = content.split('<br>');
+                    let content = $(el).find('p').text();
+
+                    let info = content.split('\n');
                     info.shift();
 
-                    let email = info[0].replace("\n", '');
-                    let phone = info[1] ? info[1].replace("\n", '') : null; // maybe not set
-                    let receptionHours = info[2] ? info[2].replace('\n', '') : null; // maybe not set
+                    console.log(info);
+
+                    let email, phone, receptionHours = null;
+
+                    if (info.length === 3) {
+                        email = info[0];
+                        phone = info[1];
+                        receptionHours = info[2];
+                    } else if (info.length === 1) {
+                        // there are some teachers that are in different format
+                        // we need another way to retrieve their data
+                        const separator = 'Ricevimento';
+                        let splitted = info[0].split(separator);
+                        email = splitted[0];
+                        receptionHours = separator + splitted[1];
+                    }
 
                     let teacher = { name, imgUrl, email, phone, receptionHours };
 
