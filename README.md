@@ -1,5 +1,8 @@
 # Applied Computer Science - Uniurb - API
 
+Computer network project for the summer session 2019.
+It's a NodeJS api that scrapes and fetch some data from the [university website](https://informatica.uniurb.it/) and format it into JSON.
+
 ## Installation and running
 
 ```bash 
