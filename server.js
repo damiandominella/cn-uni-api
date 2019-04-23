@@ -7,6 +7,16 @@ const express = require('express'),
 const api = require('./api/routes/index');
 app.use('/api', api);
 
+app.use((req, res, next) => {
+    res.status(404);
+  
+    // respond with json
+    if (req.accepts('json')) {
+      res.send({ error: 'Not found' });
+      return;
+    }
+  });
+
 app.listen(port);
 
 console.log('API server started on: ' + port);
